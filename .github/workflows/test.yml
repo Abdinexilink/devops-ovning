@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Kolla ut koden
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Skriv ut ett meddelande
         run: echo "Pipeline fungerar!"

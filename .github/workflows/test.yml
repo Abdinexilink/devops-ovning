@@ -1,0 +1,15 @@
+name: Min forsta pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kolla ut koden
+        uses: actions/checkout@v3
+
+      - name: Skriv ut ett meddelande
+        run: echo "Pipeline fungerar!"

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdi Ahmed Mohamud – Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #4f8ef7;
+      --dark: #0d1117;
+      --dark2: #161b22;
+      --dark3: #21262d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #238636;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(13,17,23,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #30363d;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: radial-gradient(ellipse at top, #1a2332 0%, var(--dark) 70%);
+    }
+    .hero-content { max-width: 700px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(79,142,247,0.15);
+      border: 1px solid rgba(79,142,247,0.3);
+      color: var(--primary);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #e6edf3, #4f8ef7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .title {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover { background: #6ba3ff; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid #30363d;
+    }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .section-line {
+      width: 50px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+      margin-bottom: 3rem;
+    }
+
+    /* OM MIG */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-card {
+      background: var(--dark2);
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 1.75rem;
+    }
+    .about-card h3 {
+      font-size: 1rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .about-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* NEXILINK */
+    .nexilink-card {
+      background: linear-gradient(135deg, var(--dark2), #1a2332);
+      border: 1px solid rgba(79,142,247,0.3);
+      border-radius: 16px;
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+    @media (max-width: 600px) { .nexilink-card { grid-template-columns: 1fr; } }
+    .nexilink-card h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .nexilink-card p { color: var(--text-muted); margin-bottom: 1rem; }
+    .nexilink-tag {
+      display: inline-block;
+      background: rgba(35,134,54,0.2);
+      border: 1px solid rgba(35,134,54,0.4);
+      color: #3fb950;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .nexilink-logo {
+      font-size: 4rem;
+      text-align: center;
+    }
+
+    /* KOMPETENSER */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-category {
+      background: var(--dark2);
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .skill-category h3 {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      background: var(--dark3);
+      border: 1px solid #30363d;
+      color: var(--text);
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+    .skill-tag.tech { border-color: rgba(79,142,247,0.4); color: var(--primary); }
+
+    /* PROJEKT */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--dark2);
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: var(--primary); transform: translateY(-3px); }
+    .project-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .project-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+    .project-tag {
+      background: rgba(79,142,247,0.1);
+      color: var(--primary);
+      border: 1px solid rgba(79,142,247,0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+    }
+    .project-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .project-link:hover { text-decoration: underline; }
+
+    /* KONTAKT */
+    .contact-card {
+      background: var(--dark2);
+      border: 1px solid #30363d;
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+    }
+    .contact-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .contact-card p { color: var(--text-muted); margin-bottom: 2rem; }
+    .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid #21262d;
+    }
+
+    /* SCROLL ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Abdi Ahmed Mohamud</div>
+    <ul>
+      <li><a href="#om">Om mig</a></li>
+      <li><a href="#nexilink">Nexilink</a></li>
+      <li><a href="#kompetenser">Kompetenser</a></li>
+      <li><a href="#projekt">Projekt</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🚀 Socionom &amp; DevOps-student</div>
+      <h1>Abdi Ahmed Mohamud</h1>
+      <div class="title">Cloud Engineer · Grundare av Nexilink</div>
+      <p>Med över 10 års erfarenhet inom socialt arbete och en passion för teknik bygger jag framtidens lösningar för onboarding och kompetensutveckling.</p>
+      <div class="hero-buttons">
+        <a href="#projekt" class="btn btn-primary">Se mina projekt</a>
+        <a href="#kontakt" class="btn btn-outline">Kontakta mig</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- OM MIG -->
+  <section id="om" class="fade-in">
+    <div class="section-title">Om mig</div>
+    <div class="section-line"></div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>👤 Bakgrund</h3>
+        <p>Socionom med över 10 års erfarenhet inom socialt arbete. Har arbetat med ungdomar kopplat till skola, socialtjänst och fritidsverksamhet.</p>
+      </div>
+      <div class="about-card">
+        <h3>💡 Idag</h3>
+        <p>Grundare av Nexilink – ett bolag som löser onboarding och träning för nya medarbetare inom socialt arbete. Utbildar mig inom DevOps och Cloud.</p>
+      </div>
+      <div class="about-card">
+        <h3>☁️ DevOps-resa</h3>
+        <p>Lär mig Linux, Git, Docker, GitHub Actions och AWS för att kunna bygga och drifta moderna molnbaserade system.</p>
+      </div>
+      <div class="about-card">
+        <h3>🎯 Mål</h3>
+        <p>Kombinera min djupa förståelse för socialt arbete med teknisk kompetens för att skapa verktyg som gör verklig skillnad för yrkesverksamma i branschen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXILINK -->
+  <section id="nexilink" class="fade-in">
+    <div class="section-title">Nexilink</div>
+    <div class="section-line"></div>
+    <div class="nexilink-card">
+      <div>
+        <span class="nexilink-tag">✨ Grundare &amp; VD</span>
+        <h3>Nexilink</h3>
+        <p>Nexilink löser ett av socialt arbetes största utmaningar – onboarding och träning av nya medarbetare. Genom smarta digitala lösningar hjälper vi organisationer att snabbare komma upp i full effektivitet.</p>
+        <p>Bolaget kombinerar branschkunskap från över 10 år i verksamheten med modern teknologi för att skapa praktiska verktyg som faktiskt används.</p>
+        <a href="mailto:abdi.mohamud@nexilink.se" class="btn btn-outline" style="display:inline-block; margin-top:0.5rem;">Kontakta Nexilink</a>
+      </div>
+      <div class="nexilink-logo">🔗</div>
+    </div>
+  </section>
+
+  <!-- KOMPETENSER -->
+  <section id="kompetenser" class="fade-in">
+    <div class="section-title">Kompetenser</div>
+    <div class="section-line"></div>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>☁️ Cloud &amp; DevOps</h3>
+        <div class="skill-tags">
+          <span class="skill-tag tech">AWS EC2</span>
+          <span class="skill-tag tech">AWS S3</span>
+          <span class="skill-tag tech">Docker</span>
+          <span class="skill-tag tech">Docker Compose</span>
+          <span class="skill-tag tech">GitHub Actions</span>
+          <span class="skill-tag tech">CI/CD</span>
+          <span class="skill-tag tech">Linux</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>💻 Utveckling</h3>
+        <div class="skill-tags">
+          <span class="skill-tag tech">Git</span>
+          <span class="skill-tag tech">GitHub</span>
+          <span class="skill-tag tech">HTML</span>
+          <span class="skill-tag tech">Bash/Terminal</span>
+          <span class="skill-tag tech">YAML</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>🤝 Socialt arbete</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Ungdomsarbete</span>
+          <span class="skill-tag">Socialtjänst</span>
+          <span class="skill-tag">Fritidsverksamhet</span>
+          <span class="skill-tag">Onboarding</span>
+          <span class="skill-tag">Kompetensutveckling</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>📚 Studerar nu</h3>
+        <div class="skill-tags">
+          <span class="skill-tag tech">Terraform</span>
+          <span class="skill-tag tech">Kubernetes</span>
+          <span class="skill-tag tech">AWS Cloud Practitioner</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJEKT -->
+  <section id="projekt" class="fade-in">
+    <div class="section-title">Projekt</div>
+    <div class="section-line"></div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>🐳 Docker Webbserver</h3>
+        <p>Byggde en egen Docker-image med nginx och körde en custom webbsida i en container.</p>
+        <div class="project-tags">
+          <span class="project-tag">Docker</span>
+          <span class="project-tag">nginx</span>
+          <span class="project-tag">HTML</span>
+        </div>
+        <a href="https://github.com/Abdinexilink/devops-ovning" target="_blank" class="project-link">→ Se på GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>⚙️ CI/CD Pipeline</h3>
+        <p>Satte upp en automatisk pipeline med GitHub Actions som körs vid varje push till main-branchen.</p>
+        <div class="project-tags">
+          <span class="project-tag">GitHub Actions</span>
+          <span class="project-tag">CI/CD</span>
+          <span class="project-tag">YAML</span>
+        </div>
+        <a href="https://github.com/Abdinexilink/devops-ovning" target="_blank" class="project-link">→ Se på GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>☁️ AWS EC2 Server</h3>
+        <p>Lanserade en virtuell server på AWS i Stockholm, konfigurerade säkerhetsgrupper och installerade nginx.</p>
+        <div class="project-tags">
+          <span class="project-tag">AWS EC2</span>
+          <span class="project-tag">Linux</span>
+          <span class="project-tag">nginx</span>
+          <span class="project-tag">SSH</span>
+        </div>
+        <a href="https://github.com/Abdinexilink" target="_blank" class="project-link">→ GitHub-profil</a>
+      </div>
+      <div class="project-card">
+        <h3>🪣 AWS S3 Webbsida</h3>
+        <p>Hostade en statisk webbsida på AWS S3 med publik åtkomst via bucket policy och static website hosting.</p>
+        <div class="project-tags">
+          <span class="project-tag">AWS S3</span>
+          <span class="project-tag">Static Hosting</span>
+          <span class="project-tag">HTML</span>
+        </div>
+        <a href="https://github.com/Abdinexilink" target="_blank" class="project-link">→ GitHub-profil</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="fade-in">
+    <div class="section-title">Kontakt</div>
+    <div class="section-line"></div>
+    <div class="contact-card">
+      <h3>Låt oss connect:a! 🤝</h3>
+      <p>Intresserad av att samarbeta eller veta mer om Nexilink? Hör av dig!</p>
+      <div class="contact-links">
+        <a href="mailto:abdi.mohamud@nexilink.se" class="contact-link">
+          📧 abdi.mohamud@nexilink.se
+        </a>
+        <a href="https://github.com/Abdinexilink" target="_blank" class="contact-link">
+          💻 github.com/Abdinexilink
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Abdi Ahmed Mohamud · Byggd med HTML &amp; AWS S3</p>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Fade in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

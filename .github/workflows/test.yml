@@ -1,15 +1,24 @@
-name: Min forsta pipeline
+name: Deploy till S3
 
 on:
   push:
     branches: [main]
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Kolla ut koden
         uses: actions/checkout@v4
 
-      - name: Skriv ut ett meddelande
-        run: echo "Pipeline fungerar!"
+      - name: Konfigurera AWS
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-north-1
+
+      - name: Ladda upp till S3
+        run: |
+          aws s3 cp index.html s3://abdirahman-devops-ovning-089029532123-eu-north-1-an/index.html
+          echo "Deployment klar!"

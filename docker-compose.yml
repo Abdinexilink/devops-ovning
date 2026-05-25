@@ -1,0 +1,10 @@
+services:
+  webb:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+
+  databas:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: hemligt123

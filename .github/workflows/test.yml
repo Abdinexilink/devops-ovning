@@ -21,4 +21,5 @@ jobs:
       - name: Ladda upp till S3
         run: |
           aws s3 cp index.html s3://abdirahman-devops-ovning-089029532123-eu-north-1-an/index.html
+          aws s3 cp nexilink-logo.png s3://abdirahman-devops-ovning-089029532123-eu-north-1-an/nexilink-logo.png
           echo "Deployment klar!"
